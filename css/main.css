@@ -1,10 +1,16 @@
+/* base page style */
+/* i changed background and text color so contrast is strong and readable. */
 body {
   font-family: 'Roboto', Helvetica, sans-serif;
-  background-color: grey;
+  /* lighter grey helps contrast */
+  background-color: #e5e5e5; 
+   /*dark text improves readability  */
+   color: #111;
   margin: 0;
   padding: 0;
 }
 
+/* Headings keep the display font */
 h1,
 h2,
 h3,
@@ -14,22 +20,57 @@ h6 {
   font-family: 'Stick No Bills', 'Roboto', Helvetica, sans-serif;
 }
 
+/* container: I added a white card background to improve contrast and overall UX. */
 .container {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 1rem;
+  background: #fff;
 }
 
+/* Give section breathing room (UX improvement) */
+.site-header,
+.main-content,
+.site-footer {
+  padding: 1rem 0;
+}
+
+.main-content section {
+  padding: 1rem 0;
+}
+
+/* images should scale */
 img {
   width: 100%;
+  display: block;
 }
 
+/* skip link: Hidden until keyboard focus (tab), then it becomes visible. */
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  padding: 12px 16px;
+  background: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+  z-index: 9999;
+}
+
+.skip-link:focus {
+  left: 12px;
+  top: 12px;
+}
+
+/* Navigation Layout */
 .main-nav ul {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   margin: 0;
   padding: 0;
+/* improve contrast and defines nav area */
+  border: 2px solid #111;
 }
 
 .main-nav ul li {
@@ -37,34 +78,74 @@ img {
   text-align: center;
 }
 
+/* links: underline helps accessibility (not relying on color). */
 .main-nav ul li a {
   display: block;
-  color: inherit;
+  color: #111;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
   text-decoration: none;
   font-size: 1.25rem;
+  padding: 0.75rem 0.5rem;
 }
+
+/* clear hover/focus statets (UX and accessibility) */
+.main-nav ul li a:hover,
+main-nav ul li a:focus-visible {
+  background: #111;
+  color: #fff;
+}
+
+/* focus styles: make keyboard focus very visible. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid #000;
+  outline-offset: 3px;
+}
+
+/* form fields: 
+borders added so fields stand out and are easy to see. */
+form .form-row {
+  margin-bottom: 1rem;
+}
+
 
 form input,
 form textarea {
   display: block;
   width: 100%;
-  margin-bottom: 1rem;
   padding: .5rem 1rem;
+  border: 2px solid #111;
+  font: inherit;
+
 }
+
+/* keep textarea stable but still readable */
 
 form textarea {
-  min-height: 150px;
-  max-height: 150px;
-  height: 150px;
-  resize: none;
+  resize: vertical;
 }
 
+/* button styling: make it look clearly interactive and good contrast */
 form button {
-  background: none;
-  border: 2px solid black;
+  background: #111;
+  color: #fff;
+  border: 2px solid #111;
   padding: 1rem;
   text-transform: uppercase;
+  cursor: pointer;
 }
+
+form button:hover,
+form button:focus-visible {
+  background: #fff;
+  color:#111
+}
+
+/* footer spacing */
 
 .site-footer {
   padding: 2rem 0;
